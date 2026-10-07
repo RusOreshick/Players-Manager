@@ -3,7 +3,7 @@ from Classes.player import Player
 class PlayerManager:
     players_list = []
 
-    def add_palyer(player: Player) -> None:
+    def add_player(player: Player) -> None:
         PlayerManager.players_list.append(player)
 
     def delete_player(player: Player) -> bool:
