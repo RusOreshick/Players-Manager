@@ -1,4 +1,4 @@
-from Classes.player import Player
+#from Classes.player import Player
 from Classes.manager import PlayerManager
 import Scripts.commands as cmd
 
@@ -19,3 +19,6 @@ while True:
     match user_command:
         case "/help":
             cmd.help()
+        case "/add":
+            player = cmd.add()
+            manager.add_player(player)
