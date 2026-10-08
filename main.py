@@ -22,4 +22,4 @@ while True:
         case "/add":
             player = cmd.add()
             manager.add_player(player)
-            print(f"Игрок ({player.get_info()})")
+            print(f"Игрок добавлен ({player.get_info()})")
