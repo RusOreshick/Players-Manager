@@ -14,7 +14,7 @@ print("Добро пожаловать в менеджер игроков!\n" \
     "/exit - выход из программы\n")
 
 while True:
-    user_command = input()
+    user_command = input("\nВведите команду >>> ")
 
     match user_command:
         case "/help":
@@ -22,3 +22,4 @@ while True:
         case "/add":
             player = cmd.add()
             manager.add_player(player)
+            print(f"Игрок ({player.get_info()})")
