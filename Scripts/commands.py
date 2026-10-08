@@ -17,3 +17,8 @@ def add():
     player_points = input("Введите очки пользователя: ")
     player = Player(player_name, player_level, player_points)
     return player
+
+def search():
+    player_name = input("Ведите имя игрока: ")
+    player = Player(player, 0, 0)
+    return player
