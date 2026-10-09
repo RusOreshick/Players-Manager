@@ -23,3 +23,10 @@ while True:
             player = cmd.add()
             manager.add_player(player)
             print(f"Игрок добавлен ({player.get_info()})")
+        case "/delete":
+            result_search = cmd.search()
+            res = manager.delete_player(result_search)
+            if res:
+                print(f"Пользователь {result_search.name} успешно удалён")
+            else:
+                print(f"Пользователь с именем {result_search.name} не найден!")

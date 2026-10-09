@@ -20,5 +20,5 @@ def add():
 
 def search():
     player_name = input("Ведите имя игрока: ")
-    player = Player(player, 0, 0)
+    player = Player(player_name, 0, 0)
     return player
