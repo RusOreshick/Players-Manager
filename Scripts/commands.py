@@ -10,7 +10,7 @@ def help():
         "/show - вывести всех игроков\n" \
         "/exit - выход из программы\n")
 
-def add() -> Player:
+def add():
     'Запрашивает данные и создаёт на их основе игрока'
     player_name = input("Введите ник игрока: ")
     player_level = input("Введите уровень игрока: ")
@@ -18,7 +18,7 @@ def add() -> Player:
     player = Player(player_name, player_level, player_points)
     return player
 
-def search() -> Player:
+def search():
     player_name = input("Ведите имя игрока: ")
     player = Player(player_name, 0, 0)
     return player
