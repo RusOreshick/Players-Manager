@@ -37,3 +37,11 @@ while True:
                 print(f"Игрок найден {res.get_info()}")
             else:
                 print(f"Игрок с именем {result_search.name} не найден!")
+        case "/show":
+            manager.show()
+        case "/exit":
+            break
+        case _:
+            print("Неверная команда используйте /help чтобы увидеть список доступных команд")
+
+print("Программа завершена")
