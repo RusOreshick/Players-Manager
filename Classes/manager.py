@@ -16,12 +16,13 @@ class PlayerManager:
             else:
                 return False
 
-    def search_player(player: Player) -> bool:
+    def search_player(player: Player):
         #Тот же принцип что и с удалением только не трогаем игрока
-        if player in PlayerManager.players_list:
-            return True
-        else:
-            return False
+        for pl in PlayerManager.players_list:
+            if player.name == pl.name:
+                return pl
+            else:
+                return False
 
     def show():
         pl_list = PlayerManager.players_list
