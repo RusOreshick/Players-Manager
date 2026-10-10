@@ -22,7 +22,7 @@ def add() -> Player:
 def search():
     return input("Ведите имя игрока: ")
 
-def save_players(path, players_list):
+def save_players(path, players_list: list):
     with open(path, "r", encoding="utf-8") as fl:
         data = json.load(fl)
 
