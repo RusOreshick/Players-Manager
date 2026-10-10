@@ -22,16 +22,16 @@ def add() -> Player:
 def search():
     return input("Ведите имя игрока: ")
 
-def save_players(path, players_list: list):
-    with open(path, "r", encoding="utf-8") as fl:
-        data = json.load(fl)
-
-    if len(players_list) != 0:
-        for i in players_list:
-            data["players"][i.name] = {"name": i.name, "level": i.level, "points": i.points}
-
-    with open(path, "w", encoding="utf-8") as fl:
-        json.dump(data, fl, indent=4)
+def save_players(path: str, players_list: list) -> None:
+    data = {"players": {}}
+    for pl in players_list:
+        data["players"][pl.name] = {
+            "name": pl.name,
+            "level": pl.level,
+            "points": pl.points,
+        }
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=4, ensure_ascii=False)
 
 def download_players(path, players_list: list):
     with open(path, "r", encoding="utf-8") as fl:
