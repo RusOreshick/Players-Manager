@@ -4,6 +4,8 @@ import Scripts.commands as cmd
 
 manager = PlayerManager
 
+cmd.download_players("Saves/save_players.json", manager.players_list)
+
 print("Добро пожаловать в менеджер игроков!\n" \
     "Вот список доступных команд:\n" \
     "/help - выводит список команд\n" \
@@ -40,7 +42,7 @@ while True:
         case "/show":
             manager.show()
         case "/exit":
-            cmd.save_player("Saves/save_players.json", manager)
+            cmd.save_players("Saves/save_players.json", manager)
             break
         case _:
             print("Неверная команда используйте /help чтобы увидеть список доступных команд")

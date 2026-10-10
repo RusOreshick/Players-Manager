@@ -1,7 +1,9 @@
 {
-    "player": {
-        "name": "niki",
-        "level": "1",
-        "points": "234"
+    "players": {
+        "niki": {
+            "name": "niki",
+            "level": "2",
+            "points": "678"
+        }
     }
 }
