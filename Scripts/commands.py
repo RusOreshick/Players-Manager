@@ -14,8 +14,8 @@ def help():
 def add() -> Player:
     'Запрашивает данные и создаёт на их основе игрока'
     player_name = input("Введите ник игрока: ")
-    player_level = input("Введите уровень игрока: ")
-    player_points = input("Введите очки пользователя: ")
+    player_level = int(input("Введите уровень игрока: "))
+    player_points = int(input("Введите очки пользователя: "))
     player = Player(player_name, player_level, player_points)
     return player
 
