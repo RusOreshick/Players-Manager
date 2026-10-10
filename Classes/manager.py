@@ -7,19 +7,19 @@ class PlayerManager:
     def add_player(self, player: Player) -> None:
         self.players_list.append(player)
 
-    def delete_player(self, player: Player) -> bool:
+    def delete_player(self, player: str) -> bool:
         #Проверяем наличие игрока в списке а после удаляем возвращая true
         #Иначе возвращаем false
         for pl in self.players_list:
-            if player.name == pl.name:
+            if player == pl.name:
                 self.players_list.remove(pl)
                 return True
         return False
 
-    def search_player(self, player: Player):
+    def search_player(self, player: str):
         #Тот же принцип что и с удалением только не трогаем игрока
         for pl in self.players_list:
-            if player.name == pl.name:
+            if player == pl.name:
                 return pl
         return False
 

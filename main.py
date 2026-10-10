@@ -29,16 +29,16 @@ while True:
             result_search = cmd.search()
             res = manager.delete_player(result_search)
             if res:
-                print(f"Игрок {result_search.name} успешно удалён")
+                print(f"Игрок {result_search} успешно удалён")
             else:
-                print(f"Игрок с именем {result_search.name} не найден!")
+                print(f"Игрок с именем {result_search} не найден!")
         case "/search":
             result_search = cmd.search()
             res = manager.search_player(result_search)
             if res:
                 print(f"Игрок найден {res.get_info()}")
             else:
-                print(f"Игрок с именем {result_search.name} не найден!")
+                print(f"Игрок с именем {result_search} не найден!")
         case "/show":
             manager.show()
         case "/exit":
