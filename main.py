@@ -40,6 +40,7 @@ while True:
         case "/show":
             manager.show()
         case "/exit":
+            cmd.save_player("Saves/save_players.json", manager)
             break
         case _:
             print("Неверная команда используйте /help чтобы увидеть список доступных команд")
