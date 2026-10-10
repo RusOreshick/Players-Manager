@@ -14,16 +14,14 @@ class PlayerManager:
             if player.name == pl.name:
                 self.players_list.remove(pl)
                 return True
-            else:
-                return False
+        return False
 
     def search_player(self, player: Player):
         #Тот же принцип что и с удалением только не трогаем игрока
         for pl in self.players_list:
             if player.name == pl.name:
                 return pl
-            else:
-                return False
+        return False
 
     def show(self):
         pl_list = self.players_list
