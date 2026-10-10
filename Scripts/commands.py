@@ -24,12 +24,12 @@ def search() -> Player:
     player = Player(player_name, 0, 0)
     return player
 
-def save_players(path, manager):
+def save_players(path, players_list):
     with open(path, "r", encoding="utf-8") as fl:
         data = json.load(fl)
 
-    if len(manager.players_list) != 0:
-        for i in manager.players_list:
+    if len(players_list) != 0:
+        for i in players_list:
             data["players"][i.name] = {"name": i.name, "level": i.level, "points": i.points}
 
     with open(path, "w", encoding="utf-8") as fl:

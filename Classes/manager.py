@@ -1,31 +1,32 @@
 from Classes.player import Player
 
 class PlayerManager:
-    players_list = []
+    def __init__(self):
+        self.players_list = []
 
-    def add_player(player: Player) -> None:
-        PlayerManager.players_list.append(player)
+    def add_player(self, player: Player) -> None:
+        self.players_list.append(player)
 
-    def delete_player(player: Player) -> bool:
+    def delete_player(self, player: Player) -> bool:
         #Проверяем наличие игрока в списке а после удаляем возвращая true
         #Иначе возвращаем false
-        for pl in PlayerManager.players_list:
+        for pl in self.players_list:
             if player.name == pl.name:
-                PlayerManager.players_list.remove(pl)
+                self.players_list.remove(pl)
                 return True
             else:
                 return False
 
-    def search_player(player: Player):
+    def search_player(self, player: Player):
         #Тот же принцип что и с удалением только не трогаем игрока
-        for pl in PlayerManager.players_list:
+        for pl in self.players_list:
             if player.name == pl.name:
                 return pl
             else:
                 return False
 
-    def show():
-        pl_list = PlayerManager.players_list
+    def show(self):
+        pl_list = self.players_list
         if len(pl_list) > 0:
             for i in pl_list:
                 print(i.get_info())

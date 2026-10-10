@@ -2,7 +2,7 @@
 from Classes.manager import PlayerManager
 import Scripts.commands as cmd
 
-manager = PlayerManager
+manager = PlayerManager()
 
 cmd.download_players("Saves/save_players.json", manager.players_list)
 
@@ -42,7 +42,7 @@ while True:
         case "/show":
             manager.show()
         case "/exit":
-            cmd.save_players("Saves/save_players.json", manager)
+            cmd.save_players("Saves/save_players.json", manager.players_list)
             break
         case _:
             print("Неверная команда используйте /help чтобы увидеть список доступных команд")
