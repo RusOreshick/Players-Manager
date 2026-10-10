@@ -19,10 +19,8 @@ def add() -> Player:
     player = Player(player_name, player_level, player_points)
     return player
 
-def search() -> Player:
-    player_name = input("Ведите имя игрока: ")
-    player = Player(player_name, 0, 0)
-    return player
+def search():
+    return input("Ведите имя игрока: ")
 
 def save_players(path, players_list):
     with open(path, "r", encoding="utf-8") as fl:
