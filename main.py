@@ -1,10 +1,11 @@
 #from Classes.player import Player
 from Classes.manager import PlayerManager
 import Scripts.commands as cmd
+import Scripts.database as db
 
 manager = PlayerManager()
 
-cmd.download_players("Saves/save_players.json", manager.players_list)
+db.init_db()
 
 print("Добро пожаловать в менеджер игроков!\n" \
     "Вот список доступных команд:\n" \
@@ -23,8 +24,11 @@ while True:
             cmd.help()
         case "/add":
             player = cmd.add()
-            manager.add_player(player)
-            print(f"Игрок добавлен ({player.get_info()})")
+            result = manager.add_player(player)
+            if result:
+                print(f"Игрок добавлен ({player.get_info()})")
+            else:
+                print("Игрок с таким именем уже есть!")
         case "/delete":
             result_search = cmd.search()
             res = manager.delete_player(result_search)

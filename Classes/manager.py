@@ -1,11 +1,21 @@
 from Classes.player import Player
+import Scripts.database as db
+import sqlite3
 
 class PlayerManager:
     def __init__(self):
         self.players_list = []
 
     def add_player(self, player: Player) -> None:
-        self.players_list.append(player)
+        try:
+            with db.get_connection() as conn:
+                conn.execute(
+                    "insert into players(name, level, points) values (?, ?, ?)",
+                    (player.name, player.level, player.points)
+                )
+            return True
+        except sqlite3.IntegrityError:
+            return False
 
     def delete_player(self, player: str) -> bool:
         #Проверяем наличие игрока в списке а после удаляем возвращая true
