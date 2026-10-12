@@ -18,13 +18,16 @@ class PlayerManager:
             return False
 
     def delete_player(self, player: str) -> bool:
-        #Проверяем наличие игрока в списке а после удаляем возвращая true
-        #Иначе возвращаем false
-        for pl in self.players_list:
-            if player == pl.name:
-                self.players_list.remove(pl)
+        with db.get_connection() as conn:
+            conn.execute(
+                "delete from players where name = ?", (player,)
+            )
+            conn.commit()
+            cursor = conn.cursor()
+            if cursor.rowcount == 0:
                 return True
-        return False
+            else:
+                return False
 
     def search_player(self, player: str):
         #Тот же принцип что и с удалением только не трогаем игрока
