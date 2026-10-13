@@ -13,6 +13,7 @@ class PlayerManager:
                     "insert into players(name, level, points) values (?, ?, ?)",
                     (player.name, player.level, player.points)
                 )
+            conn.commit()
             return True
         except sqlite3.IntegrityError:
             return False
@@ -30,11 +31,12 @@ class PlayerManager:
                 return False
 
     def search_player(self, player: str):
-        #Тот же принцип что и с удалением только не трогаем игрока
-        for pl in self.players_list:
-            if player == pl.name:
-                return pl
-        return False
+        with db.get_connection() as conn:
+            cursor = conn.cursor()
+            cursor.execute(
+                "select * from players where name = ?", (player,)
+            )
+            return cursor.fetchone()
 
     def show(self):
         pl_list = self.players_list

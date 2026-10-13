@@ -39,10 +39,11 @@ while True:
         case "/search":
             result_search = cmd.search()
             res = manager.search_player(result_search)
-            if res:
-                print(f"Игрок найден {res.get_info()}")
-            else:
+            if res is None:
                 print(f"Игрок с именем {result_search} не найден!")
+            else:
+                player = dict(res)
+                print(f"Игрок найден. Имя: {player['name']}; Уровень: {player['level']}; Очки: {player['points']}")
         case "/show":
             manager.show()
         case "/exit":
