@@ -3,9 +3,6 @@ import Scripts.database as db
 import sqlite3
 
 class PlayerManager:
-    def __init__(self):
-        self.players_list = []
-
     def add_player(self, player: Player) -> None:
         try:
             with db.get_connection() as conn:
