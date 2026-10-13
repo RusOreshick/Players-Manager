@@ -42,8 +42,7 @@ while True:
             if res is None:
                 print(f"Игрок с именем {result_search} не найден!")
             else:
-                player = dict(res)
-                print(f"Игрок найден. Имя: {player['name']}; Уровень: {player['level']}; Очки: {player['points']}")
+                print(f"Игрок найден. {res.get_info()}")
         case "/show":
             res = manager.show()
             print(f"Найдено записей: {len(res)}")

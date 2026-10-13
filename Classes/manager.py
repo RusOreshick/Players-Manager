@@ -25,10 +25,12 @@ class PlayerManager:
     def search_player(self, player: str):
         with db.get_connection() as conn:
             cursor = conn.cursor()
-            cursor.execute(
+            row = cursor.execute(
                 "select * from players where name = ?", (player,)
-            )
-            return cursor.fetchone()
+            ).fetchone()
+            if row is None:
+                return None
+            return Player(row["name"], row["level"], row["points"])
 
     def show(self):
         with db.get_connection() as conn:
