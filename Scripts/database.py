@@ -17,7 +17,3 @@ def init_db():
             points integer not null default 0
         )
         ''')
-
-def close_db():
-    with get_connection() as conn:
-        conn.close()

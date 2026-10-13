@@ -51,7 +51,6 @@ while True:
                 player = dict(row)
                 print(f"Имя: {player['name']}| Уровень: {player['level']}| Очки: {player['points']}")
         case "/exit":
-            db.close_db()
             break
         case _:
             print("Неверная команда используйте /help чтобы увидеть список доступных команд")

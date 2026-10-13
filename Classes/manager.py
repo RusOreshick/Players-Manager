@@ -26,9 +26,9 @@ class PlayerManager:
             conn.commit()
             cursor = conn.cursor()
             if cursor.rowcount == 0:
-                return True
-            else:
                 return False
+            else:
+                return True
 
     def search_player(self, player: str):
         with db.get_connection() as conn:
