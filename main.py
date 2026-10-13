@@ -46,9 +46,8 @@ while True:
         case "/show":
             res = manager.show()
             print(f"Найдено записей: {len(res)}")
-            for row in res:
-                player = dict(row)
-                print(f"Имя: {player['name']}| Уровень: {player['level']}| Очки: {player['points']}")
+            for player in res:
+                print(player.get_info())
         case "/exit":
             break
         case _:

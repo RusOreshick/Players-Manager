@@ -3,7 +3,7 @@ import Scripts.database as db
 import sqlite3
 
 class PlayerManager:
-    def add_player(self, player: Player) -> None:
+    def add_player(self, player: Player) -> bool:
         try:
             with db.get_connection() as conn:
                 conn.execute(
@@ -22,7 +22,7 @@ class PlayerManager:
             )
             return cursor.rowcount != 0
 
-    def search_player(self, player: str):
+    def search_player(self, player: str) -> Player:
         with db.get_connection() as conn:
             cursor = conn.cursor()
             row = cursor.execute(
@@ -32,10 +32,13 @@ class PlayerManager:
                 return None
             return Player(row["name"], row["level"], row["points"])
 
-    def show(self):
+    def show(self) -> list[Player]:
         with db.get_connection() as conn:
             cursor = conn.cursor()
-            cursor.execute(
+            players = cursor.execute(
                 "select * from players order by points desc"
-                )
-            return cursor.fetchall()
+                ).fetchall()
+            list_players = []
+            for player in players:
+                list_players.append(Player(player["name"], player["level"], player["points"]))
+            return list_players
