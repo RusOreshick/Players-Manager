@@ -10,7 +10,6 @@ class PlayerManager:
                     "insert into players(name, level, points) values (?, ?, ?)",
                     (player.name, player.level, player.points)
                 )
-            conn.commit()
             return True
         except sqlite3.IntegrityError:
             return False
@@ -21,7 +20,6 @@ class PlayerManager:
             cursor.execute(
                 "delete from players where name = ?", (player,)
             )
-            conn.commit()
             return cursor.rowcount != 0
 
     def search_player(self, player: str):
