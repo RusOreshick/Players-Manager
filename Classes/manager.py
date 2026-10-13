@@ -39,9 +39,9 @@ class PlayerManager:
             return cursor.fetchone()
 
     def show(self):
-        pl_list = self.players_list
-        if len(pl_list) > 0:
-            for i in pl_list:
-                print(i.get_info())
-        else:
-            print("Список пуст.")
+        with db.get_connection() as conn:
+            cursor = conn.cursor()
+            cursor.execute(
+                "select * from players order by points desc"
+                )
+            return cursor.fetchall()

@@ -45,8 +45,13 @@ while True:
                 player = dict(res)
                 print(f"Игрок найден. Имя: {player['name']}; Уровень: {player['level']}; Очки: {player['points']}")
         case "/show":
-            manager.show()
+            res = manager.show()
+            print(f"Найдено записей: {len(res)}")
+            for row in res:
+                player = dict(row)
+                print(f"Имя: {player['name']}| Уровень: {player['level']}| Очки: {player['points']}")
         case "/exit":
+            db.close_db()
             break
         case _:
             print("Неверная команда используйте /help чтобы увидеть список доступных команд")
