@@ -19,7 +19,7 @@ def add() -> Player:
     player = Player(player_name, player_level, player_points)
     return player
 
-def search():
+def search() -> str:
     return input("Ведите имя игрока: ")
 
 def update_player_data() -> tuple[str, int, int]:

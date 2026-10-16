@@ -22,7 +22,7 @@ class PlayerManager:
             )
             return cursor.rowcount != 0
 
-    def search_player(self, player: str) -> Player:
+    def search_player(self, player: str) -> Player | None:
         with db.get_connection() as conn:
             cursor = conn.cursor()
             row = cursor.execute(
@@ -32,7 +32,7 @@ class PlayerManager:
                 return None
             return Player(row["name"], row["level"], row["points"])
 
-    def update_player(self, name: str, level=None, points=None):
+    def update_player(self, name: str, level: int, points: int) -> bool:
         with db.get_connection() as conn:
             cursor = conn.cursor()
             cursor.execute(

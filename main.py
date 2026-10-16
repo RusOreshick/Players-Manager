@@ -50,12 +50,15 @@ while True:
             for player in res:
                 print(player.get_info())
         case "/update":
-            player_data = cmd.update_player_data()
-            res = manager.update_player(player_data[0], player_data[1], player_data[2])
-            if res:
-                print("Данные обновлены")
-            else:
-                print("Пользователь не найден!")
+            try:
+                name, level, points = cmd.update_player_data()
+                res = manager.update_player(name, level, points)
+                if res:
+                    print("Данные обновлены")
+                else:
+                    print("Пользователь не найден!")
+            except ValueError:
+                print("Ошибка: Введены не корректные значения!")
         case "/exit":
             break
         case _:
