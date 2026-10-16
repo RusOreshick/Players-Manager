@@ -7,14 +7,15 @@ manager = PlayerManager()
 
 db.init_db()
 
-print("Добро пожаловать в менеджер игроков!\n" \
-    "Вот список доступных команд:\n" \
-    "/help - выводит список команд\n" \
-    "/add - добавляет игрока\n" \
-    "/delete - удалить игрока\n" \
-    "/search - найти игрока (проверить есть ли такой игрок)\n" \
-    "/show - вывести всех игроков\n" \
-    "/exit - выход из программы\n")
+print("""Добро пожаловать в менеджер игроков!
+    Вот список доступных команд:
+    /help - выводит список команд
+    /add - добавляет игрока
+    /delete - удалить игрока
+    /search - найти игрока (проверить есть ли такой игрок)
+    /show - вывести всех игроков
+    /update - обновить данные пользователя
+    /exit - выход из программы""")
 
 while True:
     user_command = input("\nВведите команду >>> ")
@@ -48,6 +49,13 @@ while True:
             print(f"Найдено записей: {len(res)}")
             for player in res:
                 print(player.get_info())
+        case "/update":
+            player_data = cmd.update_player_data()
+            res = manager.update_player(player_data[0], player_data[1], player_data[2])
+            if res:
+                print("Данные обновлены")
+            else:
+                print("Пользователь не найден!")
         case "/exit":
             break
         case _:

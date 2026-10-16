@@ -32,6 +32,14 @@ class PlayerManager:
                 return None
             return Player(row["name"], row["level"], row["points"])
 
+    def update_player(self, name: str, level=None, points=None):
+        with db.get_connection() as conn:
+            cursor = conn.cursor()
+            cursor.execute(
+                "update players set level = ?, points = ? where name = ?", (level, points, name)
+            )
+            return cursor.rowcount != 0
+
     def show(self) -> list[Player]:
         with db.get_connection() as conn:
             cursor = conn.cursor()
